@@ -38,6 +38,7 @@ public class ConnectedServiceImpl implements ConnectedService {
         boolean isConnected = isIdenticalInput(origin, destination, cities);
 
         if (!isConnected && cities.containsKey(origin) && cities.containsKey(destination)) {
+            //bfs
             Set<String> visited = new HashSet<>();
             Queue<String> tobeVisited = new LinkedList<>();
 
@@ -50,9 +51,9 @@ public class ConnectedServiceImpl implements ConnectedService {
                 cities.get(city).stream().forEach(c -> {
                     if (!visited.contains(c)) {
                         tobeVisited.add(c);
-                        visited.add(c);
                     }
                 });
+                visited.add(city);
             }
         }
 
